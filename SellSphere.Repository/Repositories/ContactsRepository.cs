@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SellSphere.Core;
 using SellSphere.Repository.Dto.ActivityDto;
+using SellSphere.Repository.Dto.CategoryDto;
 using SellSphere.Repository.Dto.ContactsDto;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,35 @@ namespace SellSphere.Repository.Repositories
         {
             return _mapper.Map<IEnumerable<ContactsReadDto>>(await _ctx.Contactses.ToListAsync());
         }
+
+
+        //CREATE
+        public async Task<int> AddContacts(ContactsCreateDto category)
+        {
+            var data = await _ctx.Contactses.AddAsync(_mapper.Map<Contacts>(category));
+            await _ctx.SaveChangesAsync();
+            return data.Entity.ContactsId;
+        }
+
+        //EDIT
+        public async Task<int> UpdateContacts(ContactsReadDto newContacts)
+        {
+            var contactsInDB = _ctx.Contactses.FirstOrDefault(x => x.ContactsId == newContacts.ContactsId);
+            contactsInDB.ContactPerson = newContacts.ContactPerson;
+            await _ctx.SaveChangesAsync();
+
+            var data = _mapper.Map<ContactsReadDto>(contactsInDB);
+            return data.ContactsId;
+        }
+
+        //DELETE
+        public async Task DeleteContacts(int id)
+        {
+            _ctx.Contactses.Remove(_ctx.Contactses.Find(id));
+            _ctx.SaveChanges();
+        }
+
+
 
         public async Task<Contacts> AddContactsAsync(Contacts model)
         {

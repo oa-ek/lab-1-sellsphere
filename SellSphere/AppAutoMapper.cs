@@ -20,9 +20,6 @@ namespace SellSphere
             CreateMap<GoodsCreateDto, Goods>();
             CreateMap<Goods, GoodsCreateDto>();
 
-            CreateMap<ActivityReadDto, Goods>();
-            CreateMap<Goods, ActivityReadDto>();
-
             CreateMap<CategoryReadDto, Category>();
             CreateMap<Category, CategoryReadDto>();
             CreateMap<CategoryCreateDto, Category>();

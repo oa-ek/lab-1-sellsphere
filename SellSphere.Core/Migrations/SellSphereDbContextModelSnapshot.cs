@@ -51,22 +51,22 @@ namespace SellSphere.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "41ba8efb-917d-4827-b7a9-2b9ca88324cb",
-                            ConcurrencyStamp = "34def90f-1566-455f-aed7-23ecdb26d356",
+                            Id = "70a6ec90-4d04-49c5-9180-44010eba48c1",
+                            ConcurrencyStamp = "a278f58c-8d04-4eeb-82c1-e76c17deab01",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "eea06f46-65c6-4b64-a57a-4e36d846c462",
-                            ConcurrencyStamp = "eb94e341-90d1-4be1-9f29-e87daa807484",
+                            Id = "929c1887-ba7c-4009-8f44-0aebe65bdb1b",
+                            ConcurrencyStamp = "1ce867b6-dc1f-4d01-8211-7e8fc639f61c",
                             Name = "Moderator",
                             NormalizedName = "MODERATOR"
                         },
                         new
                         {
-                            Id = "8bc01d01-b833-4304-bdda-10da6e453715",
-                            ConcurrencyStamp = "8fc5c82a-7df2-4053-9302-ce9c66ddd7ec",
+                            Id = "1b758f60-da06-4ab0-b78d-097055beda09",
+                            ConcurrencyStamp = "afc52d8c-f8c8-4d23-a0fb-815649eb118f",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -163,33 +163,33 @@ namespace SellSphere.Core.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "c145bd0d-9ff1-41ce-a54b-2756033b5233",
-                            RoleId = "41ba8efb-917d-4827-b7a9-2b9ca88324cb"
+                            UserId = "087c7c42-eb78-4673-ba95-1f9382faf1b7",
+                            RoleId = "70a6ec90-4d04-49c5-9180-44010eba48c1"
                         },
                         new
                         {
-                            UserId = "c145bd0d-9ff1-41ce-a54b-2756033b5233",
-                            RoleId = "eea06f46-65c6-4b64-a57a-4e36d846c462"
+                            UserId = "087c7c42-eb78-4673-ba95-1f9382faf1b7",
+                            RoleId = "929c1887-ba7c-4009-8f44-0aebe65bdb1b"
                         },
                         new
                         {
-                            UserId = "c145bd0d-9ff1-41ce-a54b-2756033b5233",
-                            RoleId = "8bc01d01-b833-4304-bdda-10da6e453715"
+                            UserId = "087c7c42-eb78-4673-ba95-1f9382faf1b7",
+                            RoleId = "1b758f60-da06-4ab0-b78d-097055beda09"
                         },
                         new
                         {
-                            UserId = "620b20af-c677-4632-81fb-0719f049d4d5",
-                            RoleId = "eea06f46-65c6-4b64-a57a-4e36d846c462"
+                            UserId = "e5c98b96-80ba-4d1c-bd2c-534b33f98e37",
+                            RoleId = "929c1887-ba7c-4009-8f44-0aebe65bdb1b"
                         },
                         new
                         {
-                            UserId = "620b20af-c677-4632-81fb-0719f049d4d5",
-                            RoleId = "8bc01d01-b833-4304-bdda-10da6e453715"
+                            UserId = "e5c98b96-80ba-4d1c-bd2c-534b33f98e37",
+                            RoleId = "1b758f60-da06-4ab0-b78d-097055beda09"
                         },
                         new
                         {
-                            UserId = "e6fca04f-0dd0-4990-b10f-0784cd05236c",
-                            RoleId = "8bc01d01-b833-4304-bdda-10da6e453715"
+                            UserId = "edcb8072-ad0d-49ad-9f0c-e92bac37f5d8",
+                            RoleId = "1b758f60-da06-4ab0-b78d-097055beda09"
                         });
                 });
 
@@ -473,7 +473,7 @@ namespace SellSphere.Core.Migrations
                             LocationId = 1,
                             Price = 35440,
                             PublicationDate = new DateTime(2023, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = "e6fca04f-0dd0-4990-b10f-0784cd05236c"
+                            UserId = "edcb8072-ad0d-49ad-9f0c-e92bac37f5d8"
                         });
                 });
 
@@ -594,49 +594,49 @@ namespace SellSphere.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c145bd0d-9ff1-41ce-a54b-2756033b5233",
+                            Id = "087c7c42-eb78-4673-ba95-1f9382faf1b7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a6f137b0-98db-4fbe-8bde-03f00532aba5",
+                            ConcurrencyStamp = "59c6b45e-9282-42af-a46b-a603fbfa96ad",
                             Email = "admin@sellsphere.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@SELLSPHERE.COM",
                             NormalizedUserName = "ADMIN@SELLSPHERE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEATAhb7anK/tFpo66PGerPhn1tYZ0Qa6aiHjLUZPbH+eRPOH1Rux4aYkHrajBzOzxw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJplg7nYc6PdvAihtV5PnBtGSKiJx5emDKELsEYBQMHXiEgjxRPw9iZTJ7zEEmjfjg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "964936bf-54df-4152-b51c-eac397343a0c",
+                            SecurityStamp = "77dfad86-e13f-418d-815f-c71e7b113be8",
                             TwoFactorEnabled = false,
                             UserName = "admin@sellsphere.com"
                         },
                         new
                         {
-                            Id = "620b20af-c677-4632-81fb-0719f049d4d5",
+                            Id = "e5c98b96-80ba-4d1c-bd2c-534b33f98e37",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5c072caf-80a7-4312-9ad0-a533ed14b0d7",
+                            ConcurrencyStamp = "ffede050-6bca-41f1-b6a1-16d6a6d38403",
                             Email = "moder@sellsphere.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MODER@SELLSPHERE.COM",
                             NormalizedUserName = "MODER@SELLSPHERE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENlVUu0KU/l6uVCsRvMG79TkAEMjgAxY7EvF3jmcwNGq9yI3gacMEnyI2gSLrlfDOA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEN//n/ALYm5lkYmdGCbtbtIQIjuWbDMXIFiY/Kt96e5GjalACYFnWJ7sB8lgIFTxlg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "55e4207d-6275-4515-baa1-f8a8fd538793",
+                            SecurityStamp = "1492cf8d-2d15-463b-a07b-b999bd04c35f",
                             TwoFactorEnabled = false,
                             UserName = "moder@sellsphere.com"
                         },
                         new
                         {
-                            Id = "e6fca04f-0dd0-4990-b10f-0784cd05236c",
+                            Id = "edcb8072-ad0d-49ad-9f0c-e92bac37f5d8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cb84880c-e3c7-452c-ab00-0e298f686cba",
+                            ConcurrencyStamp = "91b8f9ef-6c67-4f79-94d2-564f39856a10",
                             Email = "user@sellsphere.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@SELLSPHERE.COM",
                             NormalizedUserName = "USER@SELLSPHERE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEA4yqH1znagn8VbYUadEjdCm14DXIsHQ6KPwBs3E82VDWg/FY7kVVqKSyleYS1vmZg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKIpVJnDaC8GcZSDRSKv/V+bzXeUh0f70HFNTc1BV1iF10vyeo/hRyMGZOQvcj9uyQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f73d29b1-88f3-4028-b34c-cd96a65011d0",
+                            SecurityStamp = "80e5a777-a326-490f-808f-25f409974d02",
                             TwoFactorEnabled = false,
                             UserName = "user@sellsphere.com"
                         });

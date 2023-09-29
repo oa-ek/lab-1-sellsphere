@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SellSphere.Core;
 using SellSphere.Repository.Dto.ActivityDto;
+using SellSphere.Repository.Dto.DeliveryDto;
 using SellSphere.Repository.Dto.LocationDto;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,33 @@ namespace SellSphere.Repository.Repositories
         public async Task<IEnumerable<LocationReadDto>> GetLocationsAsync()
         {
             return _mapper.Map<IEnumerable<LocationReadDto>>(await _ctx.Locations.ToListAsync());
+        }
+
+
+        //CREATE
+        public async Task<int> AddLocation(LocationCreateDto category)
+        {
+            var data = await _ctx.Locations.AddAsync(_mapper.Map<Location>(category));
+            await _ctx.SaveChangesAsync();
+            return data.Entity.LocationId;
+        }
+
+        //EDIT
+        public async Task<int> UpdateLocation(LocationReadDto newLocation)
+        {
+            var locationInDB = _ctx.Locations.FirstOrDefault(x => x.LocationId == newLocation.LocationId);
+            locationInDB.LocationName = newLocation.LocationName;
+            await _ctx.SaveChangesAsync();
+
+            var data = _mapper.Map<LocationReadDto>(locationInDB);
+            return data.LocationId;
+        }
+
+        //DELETE
+        public async Task DeleteLocation(int id)
+        {
+            _ctx.Locations.Remove(_ctx.Locations.Find(id));
+            _ctx.SaveChanges();
         }
 
         public async Task<Location> AddLocationAsync(Location model)

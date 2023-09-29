@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SellSphere.Core;
 using SellSphere.Repository.Dto.ActivityDto;
+using SellSphere.Repository.Dto.CategoryDto;
 using SellSphere.Repository.Repositories;
 
 namespace SellSphere.Controllers
@@ -24,7 +25,36 @@ namespace SellSphere.Controllers
             return await _activityRepository.GetActivitiesAsync();
         }
 
-       
+        /// <summary>
+        /// Create author
+        /// </summary>
+        /// <param name="dto"></param>
+        [HttpPost]
+        public async Task<int> AddActivity(ActivityCreateDto dto)
+        {
+            return await _activityRepository.AddActivity(dto);
+        }
+
+        /// <summary>
+        /// Update author
+        /// </summary>
+        /// <param name="id"></param>
+        [HttpPut("{id}")]
+        public async Task<int> EditActivity(ActivityReadDto activity)
+        {
+            return await _activityRepository.UpdateActivity(activity);
+        }
+
+        /// <summary>
+        /// Delete author by id
+        /// </summary>
+        /// <param name="id"></param>
+        [HttpDelete("{id}")]
+        public async Task Delete(int id)
+        {
+            await _activityRepository.DeleteActivity(id);
+        }
+
         /*[HttpPost("{id}")]
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Create(ActivityCreateDto activityDto)
