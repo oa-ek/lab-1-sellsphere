@@ -24,6 +24,32 @@ namespace SellSphere.Repository.Repositories
         {
             return _mapper.Map<IEnumerable<CategoryReadDto>>(await _ctx.Categories.ToListAsync());
         }
+
+        //CREATE
+        public async Task<int> AddCategory(CategoryCreateDto category)
+        {
+            var data = await _ctx.Categories.AddAsync(_mapper.Map<Category>(category));
+            await _ctx.SaveChangesAsync();
+            return data.Entity.CategoryId;
+        }
+
+        //EDIT
+        public async Task<int> UpdateCategory(CategoryReadDto newCategory)
+        {
+            var categoryInDB = _ctx.Categories.FirstOrDefault(x => x.CategoryId == newCategory.CategoryId);
+            categoryInDB.CategoryName = newCategory.CategoryName;
+            await _ctx.SaveChangesAsync();
+
+            var data = _mapper.Map<CategoryReadDto>(categoryInDB);
+            return data.CategoryId;
+        }
+
+        //DELETE
+        public async Task DeleteCategory(int id)
+        {
+            _ctx.Categories.Remove(_ctx.Categories.Find(id));
+            _ctx.SaveChanges();
+        }
         public async Task<Category> AddCategoryAsync(Category model)
         {
             _ctx.Categories.Add(model);

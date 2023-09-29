@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/Martin/Downloads/SellSphere/SellSphere.Repository/SellSphere.Repository.csproj": {}
+    "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Repository\\SellSphere.Repository.csproj": {}
   },
   "projects": {
-    "/Users/Martin/Downloads/SellSphere/SellSphere.Core/SellSphere.Core.csproj": {
+    "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Core\\SellSphere.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/Martin/Downloads/SellSphere/SellSphere.Core/SellSphere.Core.csproj",
+        "projectUniqueName": "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Core\\SellSphere.Core.csproj",
         "projectName": "SellSphere.Core",
-        "projectPath": "/Users/Martin/Downloads/SellSphere/SellSphere.Core/SellSphere.Core.csproj",
-        "packagesPath": "/Users/Martin/.nuget/packages/",
-        "outputPath": "/Users/Martin/Downloads/SellSphere/SellSphere.Core/obj/",
+        "projectPath": "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Core\\SellSphere.Core.csproj",
+        "packagesPath": "C:\\Users\\fasol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/Martin/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\fasol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -77,34 +79,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.307/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/Martin/Downloads/SellSphere/SellSphere.Repository/SellSphere.Repository.csproj": {
+    "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Repository\\SellSphere.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/Martin/Downloads/SellSphere/SellSphere.Repository/SellSphere.Repository.csproj",
+        "projectUniqueName": "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Repository\\SellSphere.Repository.csproj",
         "projectName": "SellSphere.Repository",
-        "projectPath": "/Users/Martin/Downloads/SellSphere/SellSphere.Repository/SellSphere.Repository.csproj",
-        "packagesPath": "/Users/Martin/.nuget/packages/",
-        "outputPath": "/Users/Martin/Downloads/SellSphere/SellSphere.Repository/obj/",
+        "projectPath": "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Repository\\SellSphere.Repository.csproj",
+        "packagesPath": "C:\\Users\\fasol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/Martin/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\fasol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/Martin/Downloads/SellSphere/SellSphere.Core/SellSphere.Core.csproj": {
-                "projectPath": "/Users/Martin/Downloads/SellSphere/SellSphere.Core/SellSphere.Core.csproj"
+              "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Core\\SellSphere.Core.csproj": {
+                "projectPath": "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Core\\SellSphere.Core.csproj"
               }
             }
           }
@@ -140,7 +144,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.307/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SellSphere.Core;
+using SellSphere.Repository.Dto.ActivityDto;
 using SellSphere.Repository.Dto.CategoryDto;
 using SellSphere.Repository.Dto.Condition;
 using SellSphere.Repository.Repositories;
@@ -22,6 +24,36 @@ namespace SellSphere.Controllers
         public async Task<IEnumerable<ConditionReadDto>> GetListAsync()
         {
             return await _conditionRepository.GetConditionsAsync();
+        }
+
+        /// <summary>
+        /// Create author
+        /// </summary>
+        /// <param name="dto"></param>
+        [HttpPost]
+        public async Task<int> AddCondition(ConditionCreateDto dto)
+        {
+            return await _conditionRepository.AddCondition(dto);
+        }
+
+        /// <summary>
+        /// Update author
+        /// </summary>
+        /// <param name="id"></param>
+        [HttpPut("{id}")]
+        public async Task<int> EditCondition(ConditionReadDto condition)
+        {
+            return await _conditionRepository.UpdateCondition(condition);
+        }
+
+        /// <summary>
+        /// Delete author by id
+        /// </summary>
+        /// <param name="id"></param>
+        [HttpDelete("{id}")]
+        public async Task Delete(int id)
+        {
+            await _conditionRepository.DeleteCondition(id);
         }
     }
 }

@@ -23,5 +23,35 @@ namespace SellSphere.Controllers
         {
             return await _contactsRepository.GetContactsesAsync();
         }
+
+        /// <summary>
+        /// Create author
+        /// </summary>
+        /// <param name="dto"></param>
+        [HttpPost]
+        public async Task<int> AddContacts(ContactsCreateDto dto)
+        {
+            return await _contactsRepository.AddContacts(dto);
+        }
+
+        /// <summary>
+        /// Update author
+        /// </summary>
+        /// <param name="id"></param>
+        [HttpPut("{id}")]
+        public async Task<int> EditContacts(ContactsReadDto contacts)
+        {
+            return await _contactsRepository.UpdateContacts(contacts);
+        }
+
+        /// <summary>
+        /// Delete author by id
+        /// </summary>
+        /// <param name="id"></param>
+        [HttpDelete("{id}")]
+        public async Task Delete(int id)
+        {
+            await _contactsRepository.DeleteContacts(id);
+        }
     }
 }

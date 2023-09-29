@@ -27,6 +27,31 @@ namespace SellSphere.Repository.Repositories
             return _mapper.Map<IEnumerable<ConditionReadDto>>(await _ctx.Conditions.ToListAsync());
         }
 
+        //CREATE
+        public async Task<int> AddCondition(ConditionCreateDto condition)
+        {
+            var data = await _ctx.Conditions.AddAsync(_mapper.Map<Condition>(condition));
+            await _ctx.SaveChangesAsync();
+            return data.Entity.ConditionId;
+        }
+
+        //EDIT
+        public async Task<int> UpdateCondition(ConditionReadDto newCondition)
+        {
+            var conditionInDB = _ctx.Conditions.FirstOrDefault(x => x.ConditionId == newCondition.ConditionId);
+            conditionInDB.ConditionName = newCondition.ConditionName;
+            await _ctx.SaveChangesAsync();
+
+            var data = _mapper.Map<ConditionReadDto>(conditionInDB);
+            return data.ConditionId;
+        }
+
+        //DELETE
+        public async Task DeleteCondition(int id)
+        {
+            _ctx.Conditions.Remove(_ctx.Conditions.Find(id));
+            _ctx.SaveChanges();
+        }
         public async Task<Condition> AddConditionAsync(Condition model)
         {
             _ctx.Conditions.Add(model);
