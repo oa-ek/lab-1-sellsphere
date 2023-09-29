@@ -1,0 +1,30 @@
+C:\Users\USER\source\repos\SellSphere\SellSphere.Repository\bin\Debug\net6.0\SellSphere.Repository.deps.json
+C:\Users\USER\source\repos\SellSphere\SellSphere.Repository\bin\Debug\net6.0\SellSphere.Repository.dll
+C:\Users\USER\source\repos\SellSphere\SellSphere.Repository\bin\Debug\net6.0\SellSphere.Repository.pdb
+C:\Users\USER\source\repos\SellSphere\SellSphere.Repository\bin\Debug\net6.0\SellSphere.Core.dll
+C:\Users\USER\source\repos\SellSphere\SellSphere.Repository\bin\Debug\net6.0\SellSphere.Core.pdb
+C:\Users\USER\source\repos\SellSphere\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.csproj.AssemblyReference.cache
+C:\Users\USER\source\repos\SellSphere\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\source\repos\SellSphere\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.AssemblyInfoInputs.cache
+C:\Users\USER\source\repos\SellSphere\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.AssemblyInfo.cs
+C:\Users\USER\source\repos\SellSphere\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.csproj.CoreCompileInputs.cache
+C:\Users\USER\source\repos\SellSphere\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.csproj.CopyComplete
+C:\Users\USER\source\repos\SellSphere\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.dll
+C:\Users\USER\source\repos\SellSphere\SellSphere.Repository\obj\Debug\net6.0\refint\SellSphere.Repository.dll
+C:\Users\USER\source\repos\SellSphere\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.pdb
+C:\Users\USER\source\repos\SellSphere\SellSphere.Repository\obj\Debug\net6.0\ref\SellSphere.Repository.dll
+C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Repository\bin\Debug\net6.0\SellSphere.Repository.deps.json
+C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Repository\bin\Debug\net6.0\SellSphere.Repository.dll
+C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Repository\bin\Debug\net6.0\SellSphere.Repository.pdb
+C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Repository\bin\Debug\net6.0\SellSphere.Core.dll
+C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Repository\bin\Debug\net6.0\SellSphere.Core.pdb
+C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.csproj.AssemblyReference.cache
+C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.AssemblyInfoInputs.cache
+C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.AssemblyInfo.cs
+C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.csproj.CoreCompileInputs.cache
+C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.csproj.CopyComplete
+C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.dll
+C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Repository\obj\Debug\net6.0\refint\SellSphere.Repository.dll
+C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Repository\obj\Debug\net6.0\SellSphere.Repository.pdb
+C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Repository\obj\Debug\net6.0\ref\SellSphere.Repository.dll
