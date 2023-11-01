@@ -1,0 +1,38 @@
+﻿@model SellSphere.Core.Delivery
+@{
+
+    Layout = "~/Views/Shared/_BreezeLayout.cshtml";
+}
+<div class="content-wrapper pb-0 text-center">
+    <h4>Категорії</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label asp-for="DeliveryName" class="control-label"></label>
+                    <input asp-for="DeliveryName" class="form-control" />
+                    <span asp-validation-for="DeliveryName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+
+
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</div>
