@@ -1,0 +1,15 @@
+﻿@using SellSphere.Core
+@model Goods
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_BreezeLayout.cshtml";
+}
+<div class="container">
+    <h4>Ви дійсно хочете видалити цей продукт?</h4>
+    <hr />
+    <form method="post" asp-action="Delete">
+        <input type="hidden" asp-for="GoodsId">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-action="Index">Back</a>
+    </form>
+</div>
