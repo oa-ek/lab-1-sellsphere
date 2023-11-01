@@ -1,7 +1,6 @@
 ﻿using SellSphere.Repository.Dto.ActivityDto;
 using SellSphere.Repository.Dto.CategoryDto;
 using SellSphere.Repository.Dto.Condition;
-using SellSphere.Repository.Dto.ContactsDto;
 using SellSphere.Repository.Dto.DeliveryDto;
 using SellSphere.Repository.Dto.LocationDto;
 using System;
@@ -26,16 +25,15 @@ namespace SellSphere.Repository.Dto.GoodsDto
         //public string? DeliveryName { get; set; }
         public DeliveryReadDto Delivery { get; set; }
         //public string? ContactsPerson { get; set; }
-        public ContactsReadDto Contacts { get; set; }
-        // public string? LocationName { get; set; }
+      
         public LocationReadDto Location { get; set; }
 
         public int Price { get; set; }
 
-        public string? GoodIconPath { get; set; }
+        public string? ImgPath { get; set; }
 
         public string? Description { get; set; }
-
+        public string? PhoneNumber { get; set; }
 
         public string? UserId { get; set; }
     }

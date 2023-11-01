@@ -165,14 +165,7 @@ namespace SellSphere.Core
                     ConditionName = "Б/У",
                 });
 
-            builder.Entity<Contacts>().HasData(
-                new Contacts
-                {
-                    ContactsId = 1,
-                    ContactPerson = "Іван Іванов Іванович",
-                    EmailPerson = "ivan@sellsphere.com",
-                    PhoneNumberPerson = "0681471239",
-                });
+           
 
             builder.Entity<Delivery>().HasData(
                 new Delivery
@@ -231,11 +224,29 @@ namespace SellSphere.Core
                      ActivityId = 1,
                      ConditionId = 2,
                      Description = "ноутбук в гарному стані, є невеликі подряпини, екран не битий, 15.6 дюймів",
-                     GoodIconPath = @"\Images\acer.jpg",
+                     PhoneNumber = "0685894567",
+                     ImgPath = @"\Images\acer.jpg",
                      LocationId = 1,
-                     ContactsId = 1,
                      UserId = USER_ID
-                 });
+                 },
+
+                   new Goods
+                   {
+                       GoodsId = 2,
+                       GoodsName = "Велосипед",
+                       PublicationDate = new DateTime(2023, 10, 25),
+                       Price = 66700,
+                       DeliveryId = 1,
+                       CategoryId = 4,
+                       ActivityId = 1,
+                       ConditionId = 2,
+                       Description = "Велосипед використовувався 1 рік, є незначні пошкодженння, ТО робилося кожних 200 км",
+                       PhoneNumber = "0975894567",
+                       ImgPath = @"\Images\velik.jpg",
+                       LocationId = 3,
+                       UserId = USER_ID
+                   }
+                 );
         }
     }
 }

@@ -1,0 +1,192 @@
+﻿@using SellSphere.Core
+@model SellSphere.Repository.Dto.GoodsDto.GoodsCreateDto
+@{
+    var categories = ViewBag.Categories as IEnumerable<Category>;
+    var activities = ViewBag.Activities as IEnumerable<Activity>;
+    var conditions = ViewBag.Conditions as IEnumerable<Condition>;
+    var deliveries = ViewBag.Deliveries as IEnumerable<Delivery>;
+    var locations = ViewBag.Locations as IEnumerable<Location>;
+    Layout = "~/Views/Shared/_BreezeLayout.cshtml";
+
+}
+<div class="content-wrapper pb-0 text-center">
+    <h4>Додавання товару</h4>
+    <hr />
+
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <form asp-action="Create" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="card-body">
+                    <h4 class="card-title">Horizontal Two column</h4>
+                    <div class="form-sample">
+                        <p class="card-description">Personal info</p>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="GoodsName"></label>
+                                    <div class="col-sm-9">
+                                        <input asp-for="GoodsName" class="form-control" />
+                                        <span asp-validation-for="GoodsName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Description"></label>
+                                    <div class="col-sm-9">
+                                        <input asp-for="Description" class="form-control" />
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="mb-3">
+                                        <label class="form-label"> </label>
+                                    </div>
+                                    <label class="col-sm-3 col-form-label" asp-for="CategoryName"></label>
+                                    <div class="col-sm-9">
+                                        <select class="form-select" size="3" id="categories" name="categories">
+                                            @foreach (var b in categories)
+                                            {
+                                                <option value="@b.CategoryName">@b.CategoryName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="form-group">
+                                        <label class="control-label" </label>
+
+                                    </div>
+                                    <label class="col-sm-3 col-form-label" asp-for="Price"></label>
+                                    <div class="col-sm-9">
+                                        <input asp-for="Price" class="form-control" />
+                                        <span asp-validation-for="Price" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="mb-3">
+                                        <label class="form-label"> </label>
+                                    </div>
+                                    <label class="col-sm-3 col-form-label" asp-for="LocationName"></label>
+                                    <div class="col-sm-9">
+                                        <select class="form-select" size="3" id="locations" name="locations">
+                                            @foreach (var b in locations)
+                                            {
+                                                <option value="@b.LocationName">@b.LocationName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="form-group">
+                                        <label class="control-label" </label>
+
+                                    </div>
+                                    <label class="col-sm-3 col-form-label" asp-for="DeliveryName"></label>
+                                    <div class="col-sm-9">
+                                        <select class="form-select" size="3" id="deliveries" name="deliveries">
+                                            @foreach (var b in deliveries)
+                                            {
+                                                <option value="@b.DeliveryName">@b.DeliveryName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="mb-3">
+                                        <label class="form-label"> </label>
+                                    </div>
+                                    <label class="col-sm-3 col-form-label" asp-for="ConditionName"></label>
+                                    <div class="col-sm-9">
+                                        <select class="form-select" size="3" id="conditions" name="conditions">
+                                            @foreach (var b in conditions)
+                                            {
+                                                <option value="@b.ConditionName">@b.ConditionName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="form-group">
+                                        <label class="control-label" </label>
+
+                                    </div>
+                                    <label class="col-sm-3 col-form-label" asp-for="ActivityName"></label>
+                                    <div class="col-sm-9">
+                                        <select class="form-select" size="3" id="activities" name="activities">
+                                            @foreach (var b in activities)
+                                            {
+                                                <option value="@b.ActivityName">@b.ActivityName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="form-group">
+                                        <label class="control-label" </label>
+
+                                    </div>
+                                    <label class="" col-sm-3 col-form-label" asp-for="ImgPath"></label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" name="picture" id="picture" type="file" />
+                                        <input class="col-sm-3 col-form-label" asp-for="ImgPath" type="hidden" value="0"></input>
+                                        <span asp-validation-for="ImgPath" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="row">
+
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </div>
+
+                    </div>
+            </form>
+            <!--сторого залишити-->
+        </div>
+    </div>
+</div></div>
+@section Scripts {
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(function () {
+            $(".form-select").select2();
+        });
+    </script>
+}

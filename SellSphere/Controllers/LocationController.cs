@@ -1,59 +1,71 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SellSphere.Repository.Dto.Condition;
-using SellSphere.Repository.Dto.DeliveryDto;
+using SellSphere.Core;
+
 using SellSphere.Repository.Dto.LocationDto;
 using SellSphere.Repository.Repositories;
 
 namespace SellSphere.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class LocationController
+    //[Route("api/[controller]")]
+    //[ApiController]
+    public class LocationController : Controller
     {
         private readonly ILogger<LocationController> _logger;
+        private readonly SellSphereContext dbContext;
         private readonly LocationRepository _locationRepository;
-        public LocationController(ILogger<LocationController> logger, LocationRepository locationRepository)
+        public LocationController(LocationRepository locationRepository)
         {
-            _logger = logger;
             _locationRepository = locationRepository;
         }
 
-
+        public IActionResult Index()
+        {
+            var locations = _locationRepository.GetLocations();
+            return View(locations);
+        }
         [HttpGet]
-        public async Task<IEnumerable<LocationReadDto>> GetListAsync()
+        public IActionResult Create()
         {
-            return await _locationRepository.GetLocationsAsync();
+            return View();
         }
-
-        /// <summary>
-        /// Create author
-        /// </summary>
-        /// <param name="dto"></param>
         [HttpPost]
-        public async Task<int> AddLocation(LocationCreateDto dto)
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Create(Location location)
         {
-            return await _locationRepository.AddLocation(dto);
+            if (ModelState.IsValid)
+            {
+                var createdLocation = await _locationRepository.AddLocationAsync(location);
+                return RedirectToAction("Edit", "Location", new { id = createdLocation.LocationId });
+            }
+            return View(location);
         }
-
-        /// <summary>
-        /// Update author
-        /// </summary>
-        /// <param name="id"></param>
-        [HttpPut("{id}")]
-        public async Task<int> EditLocation(LocationReadDto location)
+        [HttpGet]
+        public IActionResult Edit(int id)
         {
-            return await _locationRepository.UpdateLocation(location);
+            return View(_locationRepository.GetLocation(id));
         }
-
-        /// <summary>
-        /// Delete author by id
-        /// </summary>
-        /// <param name="id"></param>
-        [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Edit(Location location)
         {
-            await _locationRepository.DeleteLocation(id);
+            if (ModelState.IsValid)
+            {
+                await _locationRepository.UpdateLocationAsync(location);
+                return RedirectToAction("Index");
+            }
+            return View(location);
         }
-
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            return View(_locationRepository.GetLocation(id));
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Delete(Location location)
+        {
+            await _locationRepository.DeleteLocationAsync(location.LocationId);
+            return RedirectToAction("Index");
+        }
     }
 }

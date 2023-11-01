@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using SellSphere.Core;
 using SellSphere.Repository.Dto.ActivityDto;
-using SellSphere.Repository.Dto.DeliveryDto;
 using SellSphere.Repository.Dto.LocationDto;
 using System;
 using System.Collections.Generic;
@@ -14,72 +13,46 @@ namespace SellSphere.Repository.Repositories
 {
     public class LocationRepository
     {
-        private readonly SellSphereDbContext _ctx;
-        private readonly IMapper _mapper;
-        public LocationRepository(SellSphereDbContext ctx, IMapper mapper)
+        private readonly SellSphereContext _ctx;
+
+        public LocationRepository(SellSphereContext _ctx)
         {
-            _ctx = ctx;
-            _mapper = mapper;
+            this._ctx = _ctx;
         }
 
-        public async Task<IEnumerable<LocationReadDto>> GetLocationsAsync()
+        public async Task<Location> AddLocationAsync(Location location)
         {
-            return _mapper.Map<IEnumerable<LocationReadDto>>(await _ctx.Locations.ToListAsync());
-        }
-
-
-        //CREATE
-        public async Task<int> AddLocation(LocationCreateDto category)
-        {
-            var data = await _ctx.Locations.AddAsync(_mapper.Map<Location>(category));
+            _ctx.Locations.Add(location);
             await _ctx.SaveChangesAsync();
-            return data.Entity.LocationId;
-        }
-
-        //EDIT
-        public async Task<int> UpdateLocation(LocationReadDto newLocation)
-        {
-            var locationInDB = _ctx.Locations.FirstOrDefault(x => x.LocationId == newLocation.LocationId);
-            locationInDB.LocationName = newLocation.LocationName;
-            await _ctx.SaveChangesAsync();
-
-            var data = _mapper.Map<LocationReadDto>(locationInDB);
-            return data.LocationId;
-        }
-
-        //DELETE
-        public async Task DeleteLocation(int id)
-        {
-            _ctx.Locations.Remove(_ctx.Locations.Find(id));
-            _ctx.SaveChanges();
-        }
-
-        public async Task<Location> AddLocationAsync(Location model)
-        {
-            _ctx.Locations.Add(model);
-            await _ctx.SaveChangesAsync();
-            return _ctx.Locations.FirstOrDefault(x => x.LocationName == model.LocationName);
-        }
-
-        public List<Location> GetLocationTypes()
-        {
-            var locationList = _ctx.Locations.ToList();
-            return locationList;
+            return _ctx.Locations.FirstOrDefault(x => x.LocationName == location.LocationName);
         }
 
         public Location GetLocation(int id)
         {
             return _ctx.Locations.FirstOrDefault(x => x.LocationId == id);
         }
-
         public Location GetLocationByName(string name)
         {
             return _ctx.Locations.FirstOrDefault(x => x.LocationName == name);
         }
 
+        public List<Location> GetLocations()
+        {
+            var locationList = _ctx.Locations.ToList();
+            return locationList;
+        }
+
         public async Task DeleteLocationAsync(int id)
         {
             _ctx.Remove(GetLocation(id));
+            await _ctx.SaveChangesAsync();
+        }
+
+        public async Task UpdateLocationAsync(Location updatedLocation)
+        {
+            var location = _ctx.Locations.FirstOrDefault(x => x.LocationId == updatedLocation.LocationId);
+
+            location.LocationName = updatedLocation.LocationName;
             await _ctx.SaveChangesAsync();
         }
     }

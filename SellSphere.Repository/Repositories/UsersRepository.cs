@@ -12,11 +12,11 @@ namespace SellSphere.Repository.Repositories
 {
     public class UsersRepository
     {
-        private readonly SellSphereDbContext _ctx;
+        private readonly SellSphereContext _ctx;
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UsersRepository(SellSphereDbContext ctx,
+        public UsersRepository(SellSphereContext ctx,
             UserManager<User> userManager,
             RoleManager<IdentityRole> roleManager)
         {
