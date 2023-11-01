@@ -1,58 +1,71 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SellSphere.Core;
 using SellSphere.Repository.Dto.Condition;
-using SellSphere.Repository.Dto.ContactsDto;
 using SellSphere.Repository.Dto.DeliveryDto;
 using SellSphere.Repository.Repositories;
 
 namespace SellSphere.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class DeliveryController
+   // [Route("api/[controller]")]
+    //[ApiController]
+    public class DeliveryController : Controller
     {
         private readonly ILogger<DeliveryController> _logger;
+        private readonly SellSphereContext dbContext;
         private readonly DeliveryRepository _deliveryRepository;
-        public DeliveryController(ILogger<DeliveryController> logger, DeliveryRepository deliveryRepository)
+        public DeliveryController(DeliveryRepository deliveryRepository)
         {
-            _logger = logger;
             _deliveryRepository = deliveryRepository;
         }
 
-
+        public IActionResult Index()
+        {
+            var delivery = _deliveryRepository.GetDeliveries();
+            return View(delivery);
+        }
         [HttpGet]
-        public async Task<IEnumerable<DeliveryReadDto>> GetListAsync()
+        public IActionResult Create()
         {
-            return await _deliveryRepository.GetDeliveriesAsync();
+            return View();
         }
-
-        /// <summary>
-        /// Create author
-        /// </summary>
-        /// <param name="dto"></param>
         [HttpPost]
-        public async Task<int> AddDelivery(DeliveryCreateDto dto)
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Create(Delivery delivery)
         {
-            return await _deliveryRepository.AddDelivery(dto);
+            if (ModelState.IsValid)
+            {
+                var createdDelivery = await _deliveryRepository.AddDeliveryAsync(delivery);
+                return RedirectToAction("Edit", "Delivery", new { id = createdDelivery.DeliveryId });
+            }
+            return View(delivery);
         }
-
-        /// <summary>
-        /// Update author
-        /// </summary>
-        /// <param name="id"></param>
-        [HttpPut("{id}")]
-        public async Task<int> EditDelivery(DeliveryReadDto delivery)
+        [HttpGet]
+        public IActionResult Edit(int id)
         {
-            return await _deliveryRepository.UpdateDelivery(delivery);
+            return View(_deliveryRepository.GetDelivery(id));
         }
-
-        /// <summary>
-        /// Delete author by id
-        /// </summary>
-        /// <param name="id"></param>
-        [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Edit(Delivery delivery)
         {
-            await _deliveryRepository.DeleteDelivery(id);
+            if (ModelState.IsValid)
+            {
+                await _deliveryRepository.UpdateDeliveryAsync(delivery);
+                return RedirectToAction("Index");
+            }
+            return View(delivery);
+        }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            return View(_deliveryRepository.GetDelivery(id));
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Delete(Delivery delivery)
+        {
+            await _deliveryRepository.DeleteDeliveryAsync(delivery.DeliveryId);
+            return RedirectToAction("Index");
         }
     }
 }

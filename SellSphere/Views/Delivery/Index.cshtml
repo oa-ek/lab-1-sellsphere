@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SellSphere.Core.Delivery>
+@{
+    ViewData["Title"] = "Каталог Доставок";
+    Layout = "~/Views/Shared/_BreezeLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-body">
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DeliveryId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DeliveryName)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DeliveryId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DeliveryName)
+                        </td>
+
+                        <td>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.DeliveryId">Редагувати</a>
+                                    <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.DeliveryId">Деталі</a>
+                                    <a class="btn btn-sm btn-outline-secondary" asp-action="Delete" asp-route-id="@item.DeliveryId">Видалити</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</div>

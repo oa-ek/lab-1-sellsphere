@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SellSphere.Core;
 using SellSphere.Repository.Dto.ActivityDto;
-using SellSphere.Repository.Dto.CategoryDto;
 using SellSphere.Repository.Repositories;
 
 namespace SellSphere.Controllers
@@ -11,63 +10,61 @@ namespace SellSphere.Controllers
     public class ActivityController : Controller
     {
         private readonly ILogger<ActivityController> _logger;
+        private readonly SellSphereContext dbContext;
         private readonly ActivityRepository _activityRepository;
-        public ActivityController(ILogger<ActivityController> logger, ActivityRepository activityRepository)
+        public ActivityController(ActivityRepository activityRepository)
         {
-            _logger = logger;
             _activityRepository = activityRepository;
         }
 
-
+        public IActionResult Index()
+        {
+            var activities = _activityRepository.GetActivities();
+            return View(activities);
+        }
         [HttpGet]
-        public async Task<IEnumerable<ActivityReadDto>> GetListAsync()
+        public IActionResult Create()
         {
-            return await _activityRepository.GetActivitiesAsync();
+            return View();
         }
-
-        /// <summary>
-        /// Create author
-        /// </summary>
-        /// <param name="dto"></param>
         [HttpPost]
-        public async Task<int> AddActivity(ActivityCreateDto dto)
-        {
-            return await _activityRepository.AddActivity(dto);
-        }
-
-        /// <summary>
-        /// Update author
-        /// </summary>
-        /// <param name="id"></param>
-        [HttpPut("{id}")]
-        public async Task<int> EditActivity(ActivityReadDto activity)
-        {
-            return await _activityRepository.UpdateActivity(activity);
-        }
-
-        /// <summary>
-        /// Delete author by id
-        /// </summary>
-        /// <param name="id"></param>
-        [HttpDelete("{id}")]
-        public async Task Delete(int id)
-        {
-            await _activityRepository.DeleteActivity(id);
-        }
-
-        /*[HttpPost("{id}")]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Create(ActivityCreateDto activityDto)
+        public async Task<IActionResult> Create(Activity activity)
         {
             if (ModelState.IsValid)
             {
-                var activity = await _activityRepository.AddActivityAsync(new Activity
-                {
-                    ActivityName = activityDto.ActivityName
-                });
-                return RedirectToAction("Index", "Activity", new { id = activity.ActivityId });
+                var createdActivity = await _activityRepository.AddActivityAsync(activity);
+                return RedirectToAction("Edit", "Activity", new { id = createdActivity.ActivityId });
             }
-            return View(activityDto);
-        }*/
+            return View(activity);
+        }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            return View(_activityRepository.GetActivity(id));
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Edit(Activity activity)
+        {
+            if (ModelState.IsValid)
+            {
+                await _activityRepository.UpdateActivityAsync(activity);
+                return RedirectToAction("Index");
+            }
+            return View(activity);
+        }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            return View(_activityRepository.GetActivity(id));
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Delete(Activity activity)
+        {
+            await _activityRepository.DeleteActivityAsync(activity.ActivityId);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -1,56 +1,71 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SellSphere.Core;
 using SellSphere.Repository.Dto.CategoryDto;
 using SellSphere.Repository.Repositories;
+using System.Drawing.Drawing2D;
 
 namespace SellSphere.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CategoryController
+    /*[Route("api/[controller]")]
+    [ApiController]*/
+    public class CategoryController : Controller
     {
         private readonly ILogger<CategoryController> _logger;
+        private readonly SellSphereContext dbContext;
         private readonly CategoryRepository _categoryRepository;
-        public CategoryController(ILogger<CategoryController> logger, CategoryRepository categoryRepository)
+        public CategoryController(CategoryRepository categoryRepository)
         {
-            _logger = logger;
             _categoryRepository = categoryRepository;
         }
 
-
+        public IActionResult Index()
+        {
+            var categories = _categoryRepository.GetCategories();
+            return View(categories);
+        }
         [HttpGet]
-        public async Task<IEnumerable<CategoryReadDto>> GetListAsync()
+        public IActionResult Create()
         {
-            return await _categoryRepository.GetCategoriesAsync();
+            return View();
         }
-
-        /// <summary>
-        /// Create author
-        /// </summary>
-        /// <param name="dto"></param>
         [HttpPost]
-        public async Task<int> AddCategory(CategoryCreateDto dto)
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Create(Category category)
         {
-            return await _categoryRepository.AddCategory(dto);
+            if (ModelState.IsValid)
+            {
+                var createdCategory = await _categoryRepository.AddCategoryAsync(category);
+                return RedirectToAction("Edit", "Category", new { id = createdCategory.CategoryId });
+            }
+            return View(category);
         }
-
-        /// <summary>
-        /// Update author
-        /// </summary>
-        /// <param name="id"></param>
-        [HttpPut("{id}")]
-        public async Task<int> EditActor(CategoryReadDto category)
+        [HttpGet]
+        public IActionResult Edit(int id)
         {
-            return await _categoryRepository.UpdateCategory(category);
+            return View(_categoryRepository.GetCategory(id));
         }
-
-        /// <summary>
-        /// Delete author by id
-        /// </summary>
-        /// <param name="id"></param>
-        [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Edit(Category category)
         {
-            await _categoryRepository.DeleteCategory(id);
+            if (ModelState.IsValid)
+            {
+                await _categoryRepository.UpdateCategoryAsync(category);
+                return RedirectToAction("Index");
+            }
+            return View(category);
+        }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            return View(_categoryRepository.GetCategory(id));
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Delete(Category category)
+        {
+            await _categoryRepository.DeleteCategoryAsync(category.CategoryId);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -6,10 +6,11 @@ using SellSphere.Core;
 using SellSphere.Repository.Repositories;
 using System.Text.Json.Serialization;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("SellSphereConnection");
-builder.Services.AddDbContext<SellSphereDbContext>(options =>
+builder.Services.AddDbContext<SellSphereContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
@@ -23,10 +24,13 @@ builder.Services.AddDefaultIdentity<User>(options =>
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequiredLength = 5;
 }).AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<SellSphereDbContext>();
+    .AddEntityFrameworkStores<SellSphereContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -48,41 +52,34 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
+builder.Services.AddAutoMapper(typeof(AppAutoMapper).Assembly);
+builder.Services.AddControllersWithViews();
 
-builder.Services.AddControllers().AddJsonOptions(x =>
-                    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+builder.Services.AddDistributedMemoryCache();
 
 builder.Services.AddTransient<UsersRepository>();
 builder.Services.AddTransient<ActivityRepository>();
 builder.Services.AddTransient<CategoryRepository>();
 builder.Services.AddTransient<ConditionRepository>();
-builder.Services.AddTransient<ContactsRepository>();
+
 builder.Services.AddTransient<DeliveryRepository>();
 builder.Services.AddTransient<GoodsRepository>();
 builder.Services.AddTransient<LocationRepository>();
 
 
 
-builder.Services.AddAutoMapper(typeof(AppAutoMapper).Assembly);
-
-builder.Services.AddRouting(options => options.LowercaseUrls = true);
-builder.Services.AddScoped<UsersRepository>();
-builder.Services.AddScoped<CategoryRepository>();
-builder.Services.AddScoped<ActivityRepository>();
-builder.Services.AddScoped<ConditionRepository>();
-builder.Services.AddScoped<ContactsRepository>();
-builder.Services.AddScoped<DeliveryRepository>();
-builder.Services.AddScoped<GoodsRepository>();
-builder.Services.AddScoped<LocationRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
+{
+    app.UseMigrationsEndPoint();
+}
+else
 {
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
-    
 }
 
 if (app.Environment.IsDevelopment())

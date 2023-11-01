@@ -33,13 +33,13 @@ namespace SellSphere.Core
 
         public string Description { get; set; }
 
-        public string? GoodIconPath { get; set; } // Шлях до іконки
-
+        public string? ImgPath { get; set; }
+       
+        public string PhoneNumber { get; set; }
         public int LocationId { get; set; }
         public Location? Location { get; set; }
 
-        public int ContactsId { get; set; }
-        public Contacts? Contacts { get; set; }
+        
 
         public string? UserId { get; set; }
         public User? User { get; set; }

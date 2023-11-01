@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.VisualBasic.FileIO;
 using SellSphere.Core;
 using SellSphere.Models;
 using SellSphere.Repository.Dto.GoodsDto;
 using SellSphere.Repository.Repositories;
+using System.Drawing.Drawing2D;
 
 namespace SellSphere.Controllers
 {
@@ -14,218 +16,127 @@ namespace SellSphere.Controllers
     {
         private readonly ILogger<GoodsController> _logger;
 
-        private readonly GoodsRepository _goodRepository;
-        /*private readonly ActivityRepository _activityRepository;
-        private readonly CategoryRepository _categoryRepository;
-        private readonly ConditionRepository _conditionRepository;
-        private readonly ContactsRepository _contactsRepository;
-        private readonly DeliveryRepository _deliveryRepository;
-        private readonly LocationRepository _locationRepository;
-        private readonly UsersRepository _usersRepository;*/
+        private readonly GoodsRepository goodsRepository;
+        private readonly ActivityRepository activitiesRepository;
+        private readonly CategoryRepository categoriesRepository;
+        private readonly ConditionRepository conditionsRepository;
+        //private readonly ContactsRepository contactsRepository;
+        private readonly DeliveryRepository deliveriesRepository;
+        private readonly LocationRepository locationsRepository;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly UsersRepository usersRepository;
 
-        //private readonly UserManager<User> _userManager;
-        //private readonly SignInManager<User> _signInManager;
+      
 
-        public GoodsController(ILogger<GoodsController> logger, GoodsRepository goodRepository/*,
-            ActivityRepository activityRepository, CategoryRepository categoryRepository, ConditionRepository conditionRepository,
-            ContactsRepository contactRepository, DeliveryRepository deliveryRepository,
-            LocationRepository locationRepository, UsersRepository usersRepository, UserManager<User> userManager, SignInManager<User> signInManager*/)
+        public GoodsController(ILogger<GoodsController> logger, GoodsRepository goodsRepository, ActivityRepository activitiesRepository, CategoryRepository categoriesRepository,
+            ConditionRepository conditionsRepository, DeliveryRepository deliveriesRepository,
+            LocationRepository locationsRepository, UsersRepository usersRepository, IWebHostEnvironment webHostEnvironment)
         {
             _logger = logger;
-            _goodRepository = goodRepository;
-            /*_activityRepository = activityRepository;
-            _categoryRepository = categoryRepository;
-            _conditionRepository = conditionRepository;
-            _contactsRepository = contactRepository;
-            _deliveryRepository = deliveryRepository;
-            _locationRepository = locationRepository;
-            _usersRepository = usersRepository;
-            _userManager = userManager;
-            _signInManager = signInManager;*/
+            this.goodsRepository = goodsRepository;
+            this.activitiesRepository = activitiesRepository;
+            this.categoriesRepository = categoriesRepository;
+            this.conditionsRepository = conditionsRepository;
+            
+            this.deliveriesRepository = deliveriesRepository;
+            this.locationsRepository = locationsRepository;
+            this.usersRepository = usersRepository;
+            _webHostEnvironment = webHostEnvironment;
+            
         }
         [HttpGet]
         public IActionResult Index()
         {
-            return View(_goodRepository.GetGoodes());
+            return View(goodsRepository.GetGoods());
         }
 
         [HttpGet]
-        public GoodsRepository GetGoodsRepository()
+        public IActionResult Create()
         {
-            return _goodRepository;
-        }
-
-        [HttpPost("post")]
-        public async Task<int> AddGood(GoodsCreateDto dto)
-        {
-            return await _goodRepository.AddGood(dto);
-        }
-
-        /// <summary>
-        /// Update book
-        /// </summary>
-        /// <param name="id"></param>
-
-        [HttpGet("Get-good")]
-        public async Task<IEnumerable<GoodsReadDto>> GetListAsync()
-        {
-            return await _goodRepository.GetGoodsAsync();
-        }
-
-
-        /// <summary>
-        /// Delete book by id
-        /// </summary>
-        /// <param name="id"></param>
-        [HttpDelete("{id}")]
-        public async Task Delete(int id)
-        {
-            await _goodRepository.DeleteGood(id);
-        }
-        /*[HttpGet]
-        public ActionResult Details(int id)
-        {
-            ViewBag.Models = _categoryRepository.GetCategory(id);
-            return View(_categoryRepository.GetCategory(id));
-        }*/
-
-        /*[HttpGet]
-        public IActionResult Sellgood()
-        {
-            ViewBag.Activities = _activityRepository.GetActivityTypes();
-            ViewBag.Categories = _categoryRepository.GetCategoryTypes();
-            ViewBag.Conditions = _conditionRepository.GetConditionTypes();
-            ViewBag.Contacts = _contactsRepository.GetContactsTypes();
-            ViewBag.Delivery = _deliveryRepository.GetDeliveryTypes();
-            ViewBag.Location = _locationRepository.GetLocationTypes();
+            ViewBag.Categories = categoriesRepository.GetCategories();
+            ViewBag.Activities = activitiesRepository.GetActivities();
+            ViewBag.Conditions = conditionsRepository.GetConditions();
+          
+            ViewBag.Deliveries = deliveriesRepository.GetDeliveries();
+            ViewBag.Locations = locationsRepository.GetLocations();
             return View();
-        }*/
-
-        /*[HttpPost]
-        [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Sellgood(GoodsCreateDto goodDto, string activityName, string categoryName,
-            string conditionName, string contactsName, string deliveryName, string locationName)
-        {
-            ViewBag.Activities = _activityRepository.GetActivityTypes();
-            ViewBag.Categories = _categoryRepository.GetCategoryTypes();
-            ViewBag.Conditions = _conditionRepository.GetConditionTypes();
-            ViewBag.Contacts = _contactsRepository.GetContactsTypes();
-            ViewBag.Delivery = _deliveryRepository.GetDeliveryTypes();
-            ViewBag.Location = _locationRepository.GetLocationTypes();
-            if (ModelState.IsValid)
-            {
-                var activity = _activityRepository.GetActivityByName(activityName);
-                if (activity == null)
-                {
-                    activity = new Activity() { ActivityName = activityName };
-                    activity = await _activityRepository.AddActivityAsync(activity);
-                }
-
-                var category = _categoryRepository.GetCategoryByName(categoryName);
-                if (category == null)
-                {
-                    category = new Category() { CategoryName = categoryName };
-                    category = await _categoryRepository.AddCategoryAsync(category);
-                }
-
-                var condition = _conditionRepository.GetConditionByName(conditionName);
-                if (condition == null)
-                {
-                    condition = new Condition() { ConditionName = conditionName };
-                    condition = await _conditionRepository.AddConditionAsync(condition);
-                }
-
-                var contacts = _contactsRepository.GetContactsByName(contactsName);
-                if (contacts == null)
-                {
-                    contacts = new Contacts() { ContactPerson = contactsName };
-                    contacts = await _contactsRepository.AddContactsAsync(contacts);
-                }
-
-                var delivery = _deliveryRepository.GetDeliveryByName(deliveryName);
-                if (delivery == null)
-                {
-                    delivery = new Delivery() { DeliveryName = deliveryName };
-                    delivery = await _deliveryRepository.AddDeliveryAsync(delivery);
-                }
-
-
-                var location = _locationRepository.GetLocationByName(locationName);
-                if (location == null)
-                {
-                    location = new Location() { LocationName = locationName };
-                    location = await _locationRepository.AddLocationAsync(location);
-                }
-
-                var user = _usersRepository.GetUserByEmail(User.Identity.Name);
-                if (user == null)
-                {
-                    user = new User() { Email = User.Identity.Name };
-                }
-
-                var good = await _goodRepository.AddGoodsAsync(new Goods
-                {
-                    Activity = activity,
-                    Category = category,
-                    Condition = condition,
-                    Contacts = contacts,
-                    Price = goodDto.Price,
-                    PublicationDate = goodDto.PublicationDate,
-                    Delivery = delivery,
-                    Location = location,
-                    User = user
-                });
-                return RedirectToAction("Index", "Home", new { id = good.GoodsId });
-            }
-            return View(goodDto);
-        }*/
-
-        /*[HttpGet]
-        public async Task<IActionResult> Edit(int id)
-        {
-            ViewBag.Activities = _activityRepository.GetActivityTypes();
-            ViewBag.Categories = _categoryRepository.GetCategoryTypes();
-            ViewBag.Conditions = _conditionRepository.GetConditionTypes();
-            ViewBag.Contacts = _contactsRepository.GetContactsTypes();
-            ViewBag.Delivery = _deliveryRepository.GetDeliveryTypes();
-            ViewBag.Location = _locationRepository.GetLocationTypes();
-            return View(await _goodRepository.GetGoodsDto(id));
-        }*/
-
-        /*[HttpPost]
-        [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Edit(GoodsReadDto goodDto, string activityName, string categoryName,
-            string conditionName, string contactsName, string deliveryName, string locationName)
-        {
-            if (ModelState.IsValid)
-            {
-                await _goodRepository.UpdateAsync(goodDto, activityName, categoryName, conditionName, contactsName, deliveryName, locationName);
-                return RedirectToAction("Details", "Goods", new { id = goodDto.Id });
-            }
-            ViewBag.Activities = _activityRepository.GetActivityTypes();
-            ViewBag.Categories = _categoryRepository.GetCategoryTypes();
-            ViewBag.Conditions = _conditionRepository.GetConditionTypes();
-            ViewBag.Contacts = _contactsRepository.GetContactsTypes();
-            ViewBag.Delivery = _deliveryRepository.GetDeliveryTypes();
-            ViewBag.Location = _locationRepository.GetLocationTypes();
-            return View(goodDto);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Delete(int id)
-        {
-            return View(await _goodRepository.GetGoodsDto(id));
         }
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> ConfirmDelete(int id)
+        public async Task<IActionResult> Create(GoodsCreateDto goodCreateDto, string categories, string activities, string conditions, string contactses, string deliveries, string locations, IFormFile picture)
         {
-            await _goodRepository.DeleteGoodsAsync(id);
-            return RedirectToAction("Index", "Home");
+            ViewBag.Categories = categoriesRepository.GetCategories();
+            ViewBag.Activities = activitiesRepository.GetActivities();
+            ViewBag.Conditions = conditionsRepository.GetConditions();
+           
+            ViewBag.Deliveries = deliveriesRepository.GetDeliveries();
+            ViewBag.Locations = locationsRepository.GetLocations();
+            if (ModelState.IsValid)
+            {
+                string picturePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "goods", picture.FileName);
+
+                using (FileStream stream = new FileStream(picturePath, FileMode.Create))
+                    picture.CopyTo(stream);
+
+                goodCreateDto.ImgPath = Path.Combine("img", "keys", picture.FileName);
+
+
+
+                var category = categoriesRepository.GetCategoryByName(categories);
+                if (category == null)
+                {
+                    category = new Category() { CategoryName = categories };
+                    category = await categoriesRepository.AddCategoryAsync(category);
+                }
+
+                var activity = activitiesRepository.GetActivityByName(activities);
+                if (activity == null)
+                {
+                    activity = new Activity() { ActivityName = activities };
+                    activity = await activitiesRepository.AddActivityAsync(activity);
+                }
+
+                var condition = conditionsRepository.GetConditionByName(conditions);
+                if (condition == null)
+                {
+                    condition = new Condition() { ConditionName = conditions };
+                    condition = await conditionsRepository.AddConditionAsync(condition);
+                }
+
+              
+
+                var delivery = deliveriesRepository.GetDeliveryByName(deliveries);
+                if (delivery == null)
+                {
+                    delivery = new Delivery() { DeliveryName = deliveries };
+                    delivery = await deliveriesRepository.AddDeliveryAsync(delivery);
+                }
+
+                var location = locationsRepository.GetLocationByName(locations);
+                if (location == null)
+                {
+                    location = new Location() { LocationName = locations };
+                    location = await locationsRepository.AddLocationAsync(location);
+                }
+                var good = await goodsRepository.AddGoodAsync(new Goods()
+                {
+                    GoodsName = goodCreateDto.GoodsName,
+                    Description = goodCreateDto.Description,
+                    Price = goodCreateDto.Price,
+                    ImgPath = goodCreateDto.ImgPath,
+                    Category = category,
+                    Activity = activity,
+                    Condition = condition,
+                    Delivery = delivery,
+                    Location = location
+                });
+
+                return RedirectToAction("Edit", "Home", new { id = good.GoodsId });
+            }
+            return View(goodCreateDto);
         }
 
-      
-    }*/
+
     }
 }
