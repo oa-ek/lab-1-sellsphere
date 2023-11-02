@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wma/JywClMB/tPG0dBBN8tBrvMGZ60N/UAWOkij2QAq4F53dCPja3w6hTU/zdBqrl9SxsaCQaMQXGtNQNuiKLA==",
+  "dgSpecHash": "7ORx0+JflitSksDf4MyZyJzHwxyMFn5Fo8x2EAd6y7GDIruUSF2X6SPFpK/V/0YX0HKQXgI9qTzvu+lKWzF3AQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere\\SellSphere.csproj",
+  "projectFilePath": "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\Нова папка (4)\\SellSphere\\SellSphere\\SellSphere.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fasol\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\fasol\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

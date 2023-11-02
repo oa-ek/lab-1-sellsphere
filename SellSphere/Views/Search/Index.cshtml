@@ -1,0 +1,36 @@
+﻿@using SellSphere.Core
+
+@{
+    ViewData["Title"] = "Результати пошуку:";
+    Layout = "~/Views/Shared/_BreezeLayout.cshtml";
+    var goods = ViewBag.Goodes as List<Goods>;
+}
+<div class="content-wrapper pb-0 text-center">
+<h1>@ViewData["Title"]</h1>
+
+<br />
+
+    <tbody>
+        <div class="container row">
+            @foreach (var item in goods)
+            {
+                        <div class="col-sm-3">
+                            <div class="card card-block">
+                                        <img class="card-img-top img-thumbnail" style="height: 180px; width: 100%; display: block;" src="@item.ImgPath" alt="@item.GoodsName">
+                                <div class="card-block">
+                                         <h5 class="card-title">@item.GoodsName</h5>
+                                         <p class="card-text">Бренд: @item.Category.CategoryName</p>
+                            <input type="hidden" value="@item.GoodsId" />
+                            <button class="btn btn-primary addToCart">В корзину</button>
+                                  
+                                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.GoodsId">Редагувати</a>
+                                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.GoodsId">Деталі</a>
+                                    <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.GoodsId">Видалити</a>
+                                      </div>
+                                    </div>
+                                    </div>
+            }
+        </div>
+    </tbody>
+
+</div>

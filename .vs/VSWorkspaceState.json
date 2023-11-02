@@ -1,0 +1,19 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\SellSphere",
+    "\\SellSphere.Repository",
+    "\\SellSphere.Repository\\Dto",
+    "\\SellSphere.Repository\\Dto\\GoodsDto",
+    "\\SellSphere\\Areas",
+    "\\SellSphere\\Areas\\Identity",
+    "\\SellSphere\\Areas\\Identity\\Pages",
+    "\\SellSphere\\Areas\\Identity\\Pages\\Account",
+    "\\SellSphere\\Areas\\Identity\\Pages\\Account\\Manage",
+    "\\SellSphere\\Views",
+    "\\SellSphere\\Views\\Home",
+    "\\SellSphere\\Views\\Shared"
+  ],
+  "SelectedNode": "\\SellSphere.sln",
+  "PreviewInSolutionExplorer": false
+}

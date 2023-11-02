@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SellSphere.Core.Activity>
+@{
+    ViewData["Title"] = "Каталог Активностей";
+    Layout = "~/Views/Shared/_BreezeLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-body">
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ActivityId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ActivityName)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ActivityId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ActivityName)
+                        </td>
+
+                        <td>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.ActivityId">Редагувати</a>
+                                   
+                                    <a class="btn btn-sm btn-outline-secondary" asp-action="Delete" asp-route-id="@item.ActivityId">Видалити</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</div>

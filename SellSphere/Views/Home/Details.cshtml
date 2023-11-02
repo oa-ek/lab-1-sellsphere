@@ -1,0 +1,36 @@
+﻿@model SellSphere.Core.Goods
+@{
+  
+    Layout = "~/Views/Shared/_BreezeLayout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3" style="width: 18rem;">
+            <img class="card-img-top" src="@Html.DisplayFor(modelItem => Model.ImgPath)" />
+        </div>
+        <div class="col-lg-9">
+            <h3>@Html.DisplayFor(modelItem => Model.GoodsName)</h3>
+            <br />
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <ul>
+                        <li><span>Категорія: </span>@Html.DisplayFor(modelItem => Model.Category.CategoryName)</li>
+                        <li><span>Опис: </span>@Html.DisplayFor(modelItem => Model.Description)</li>
+                        <li><span>Вид активності: </span>@Html.DisplayFor(modelItem => Model.Activity.ActivityName)</li>
+                        <li><span>Стан: </span>@Html.DisplayFor(modelItem => Model.Condition.ConditionName)</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <ul>
+                        <li><span>Дата публікації: </span>@Html.DisplayFor(modelItem => Model.PublicationDate)</li>
+                        <li><span>Ціна: </span>@Html.DisplayFor(modelItem => Model.Price)</li>
+                        <li><span>Вид доставки: </span>@Html.DisplayFor(modelItem => Model.Delivery.DeliveryName)</li>
+                        <li><span>Місцезнаходження: </span>@Html.DisplayFor(modelItem => Model.Location.LocationName)</li>
+                    </ul>
+                </div>
+                
+            </div>
+           
+        </div>
+    </div>
+</div>
