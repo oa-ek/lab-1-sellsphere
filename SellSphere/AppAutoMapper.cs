@@ -3,7 +3,7 @@ using SellSphere.Core;
 using SellSphere.Repository.Dto.ActivityDto;
 using SellSphere.Repository.Dto.CategoryDto;
 using SellSphere.Repository.Dto.Condition;
-using SellSphere.Repository.Dto.ContactsDto;
+
 using SellSphere.Repository.Dto.DeliveryDto;
 using SellSphere.Repository.Dto.GoodsDto;
 using SellSphere.Repository.Dto.LocationDto;
@@ -20,6 +20,9 @@ namespace SellSphere
             CreateMap<GoodsCreateDto, Goods>();
             CreateMap<Goods, GoodsCreateDto>();
 
+            CreateMap<ActivityReadDto, Goods>();
+            CreateMap<Goods, ActivityReadDto>();
+
             CreateMap<CategoryReadDto, Category>();
             CreateMap<Category, CategoryReadDto>();
             CreateMap<CategoryCreateDto, Category>();
@@ -30,10 +33,7 @@ namespace SellSphere
             CreateMap<ConditionCreateDto, Condition>();
             CreateMap<Condition, ConditionCreateDto>();
 
-            CreateMap<ContactsReadDto, Contacts>();
-            CreateMap<Contacts, ContactsReadDto>();
-            CreateMap<ContactsCreateDto, Contacts>();
-            CreateMap<Contacts, ContactsCreateDto>();
+           
 
             CreateMap<DeliveryReadDto, Delivery>();
             CreateMap<Delivery, DeliveryReadDto>();

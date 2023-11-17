@@ -12,17 +12,17 @@ C:\Users\USER\source\repos\SellSphere\SellSphere.Core\obj\Debug\net6.0\refint\Se
 C:\Users\USER\source\repos\SellSphere\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.pdb
 C:\Users\USER\source\repos\SellSphere\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.genruntimeconfig.cache
 C:\Users\USER\source\repos\SellSphere\SellSphere.Core\obj\Debug\net6.0\ref\SellSphere.Core.dll
-C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Core\bin\Debug\net6.0\SellSphere.Core.deps.json
-C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Core\bin\Debug\net6.0\SellSphere.Core.runtimeconfig.json
-C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Core\bin\Debug\net6.0\SellSphere.Core.dll
-C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Core\bin\Debug\net6.0\SellSphere.Core.pdb
-C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.csproj.AssemblyReference.cache
-C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.AssemblyInfoInputs.cache
-C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.AssemblyInfo.cs
-C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.csproj.CoreCompileInputs.cache
-C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.dll
-C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Core\obj\Debug\net6.0\refint\SellSphere.Core.dll
-C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.pdb
-C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.genruntimeconfig.cache
-C:\Users\fasol\OneDrive\Рабочий стол\SellSphere2\SellSphere.Core\obj\Debug\net6.0\ref\SellSphere.Core.dll
+C:\Users\USER\Desktop\SellSphere\SellSphere.Core\bin\Debug\net6.0\SellSphere.Core.deps.json
+C:\Users\USER\Desktop\SellSphere\SellSphere.Core\bin\Debug\net6.0\SellSphere.Core.runtimeconfig.json
+C:\Users\USER\Desktop\SellSphere\SellSphere.Core\bin\Debug\net6.0\SellSphere.Core.dll
+C:\Users\USER\Desktop\SellSphere\SellSphere.Core\bin\Debug\net6.0\SellSphere.Core.pdb
+C:\Users\USER\Desktop\SellSphere\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\SellSphere\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Desktop\SellSphere\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.AssemblyInfoInputs.cache
+C:\Users\USER\Desktop\SellSphere\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.AssemblyInfo.cs
+C:\Users\USER\Desktop\SellSphere\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\SellSphere\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.dll
+C:\Users\USER\Desktop\SellSphere\SellSphere.Core\obj\Debug\net6.0\refint\SellSphere.Core.dll
+C:\Users\USER\Desktop\SellSphere\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.pdb
+C:\Users\USER\Desktop\SellSphere\SellSphere.Core\obj\Debug\net6.0\SellSphere.Core.genruntimeconfig.cache
+C:\Users\USER\Desktop\SellSphere\SellSphere.Core\obj\Debug\net6.0\ref\SellSphere.Core.dll

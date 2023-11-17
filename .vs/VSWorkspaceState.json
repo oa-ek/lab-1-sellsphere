@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\SellSphere",
+    "\\SellSphere.Repository",
+    "\\SellSphere.Repository\\Dto",
+    "\\SellSphere.Repository\\Dto\\GoodsDto",
+    "\\SellSphere.Repository\\Repositories",
+    "\\SellSphere\\Controllers",
+    "\\SellSphere\\Views",
+    "\\SellSphere\\Views\\Category",
+    "\\SellSphere\\Views\\Home",
+    "\\SellSphere\\Views\\Shared"
+  ],
+  "SelectedNode": "\\SellSphere\\Views\\Shared\\_LoginPartial.cshtml",
+  "PreviewInSolutionExplorer": false
+}

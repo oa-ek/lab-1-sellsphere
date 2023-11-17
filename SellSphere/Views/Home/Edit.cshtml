@@ -1,0 +1,117 @@
+﻿@using SellSphere.Core
+
+@using SellSphere.Repository
+@model Goods
+@{
+	List<Activity> activities = ViewBag.Activities;
+	List<Category> categories = ViewBag.Categories;
+	List<Condition> conditions = ViewBag.Conditions;
+	List<Delivery> deliveries = ViewBag.Deliveries;
+	List<Location> locations = ViewBag.Locations;
+	Layout = "~/Views/Shared/_BreezeLayout.cshtml";
+}
+<div class="container">
+	<h3>Редагувати товар</h3>
+	<hr />
+	<form asp-action="Edit" class="form-group">
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		@Html.HiddenFor(model => model.GoodsId)
+		<div class="form-group">
+			<label asp-for="GoodsName" class="control-label"></label>
+			<input asp-for="GoodsName" class="form-control" />
+			<span asp-validation-for="GoodsName" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="Description" class="control-label"></label>
+			<input asp-for="Description" class="form-control" />
+			<span asp-validation-for="Description" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="Price" class="control-label"></label>
+			<input asp-for="Price" class="form-control" />
+			<span asp-validation-for="Price" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="PublicationDate" class="control-label">PublicationDate</label>
+			<input asp-for="PublicationDate" class="form-control" />
+			<span asp-validation-for="PublicationDate" class="text-danger"></span>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label asp-for="ImgPath" class="control-label">Icon</label>
+				<input asp-for="ImgPath" class="form-control" />
+				<span asp-validation-for="ImgPath" class="text-danger"></span>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label asp-for="Category" class="form-label"></label>
+			<select class="form-select" id="category" name="category">
+				@foreach (Category p in categories)
+				{
+					var selected = Model.Category?.CategoryName == p.CategoryName ? true : false;
+					<!option value="@p.CategoryName" @(selected ? "selected" : "")>@p.CategoryName</!option>
+				}
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label asp-for="Activity" class="form-label"></label>
+			<select class="form-select" id="activity" name="activity">
+				@foreach (Activity p in activities)
+				{
+					var selected = Model.Activity?.ActivityName == p.ActivityName ? true : false;
+					<!option value="@p.ActivityName" @(selected ? "selected" : "")>@p.ActivityName</!option>
+				}
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label asp-for="Condition" class="form-label"></label>
+			<select class="form-select" id="condition" name="condition">
+				@foreach (Condition p in conditions)
+				{
+					var selected = Model.Condition?.ConditionName == p.ConditionName ? true : false;
+					<!option value="@p.ConditionName" @(selected ? "selected" : "")>@p.ConditionName</!option>
+				}
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label asp-for="Delivery" class="form-label"></label>
+			<select class="form-select" id="delivery" name="delivery">
+				@foreach (Delivery p in deliveries)
+				{
+					var selected = Model.Delivery?.DeliveryName == p.DeliveryName ? true : false;
+					<!option value="@p.DeliveryName" @(selected ? "selected" : "")>@p.DeliveryName</!option>
+				}
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label asp-for="Location" class="form-label"></label>
+			<select class="form-select" id="location" name="location">
+				@foreach (Location p in locations)
+				{
+					var selected = Model.Location?.LocationName == p.LocationName ? true : false;
+					<!option value="@p.LocationName" @(selected ? "selected" : "")>@p.LocationName</!option>
+				}
+			</select>
+		</div>
+		<br />
+		<div class="form-group">
+			<input type="submit" value="Edit" class="btn btn-outline-success float-right" />
+		</div>
+	</form>
+</div>
+
+@section Scripts {
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+	<script>
+		$(function () {
+			$(".form-select").select2();
+		});
+	</script>
+}

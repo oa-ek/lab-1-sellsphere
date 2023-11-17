@@ -10,7 +10,7 @@ namespace SellSphere.Repository.Dto.GoodsDto
     public class GoodsCreateDto
     {
         [Required]
-        public string? GoodsId { get; set; }
+        public int? GoodsId { get; set; }
 
         [Required]
         public string? GoodsName { get; set; }
@@ -26,8 +26,6 @@ namespace SellSphere.Repository.Dto.GoodsDto
         [Required]
         public string? ConditionName { get; set; }
 
-        [Required]
-        public string? ContactsName { get; set; }
 
         [Required]
         public string? DeliveryName { get; set; }
@@ -42,11 +40,14 @@ namespace SellSphere.Repository.Dto.GoodsDto
         public int Price { get; set; }
 
         [Required]
-        public string? GoodIconPath { get; set; }
+        public string? ImgPath { get; set; }
 
 
         [Required]
         public string? Description { get; set; }
+
+        [Required]
+        public string? PhoneNumber { get; set; }
 
         public string? UserId { get; set; }
     }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Core\\SellSphere.Core.csproj": {}
+    "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\Нова папка (4)\\SellSphere\\SellSphere.Core\\SellSphere.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Core\\SellSphere.Core.csproj": {
+    "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\Нова папка (4)\\SellSphere\\SellSphere.Core\\SellSphere.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Core\\SellSphere.Core.csproj",
+        "projectUniqueName": "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\Нова папка (4)\\SellSphere\\SellSphere.Core\\SellSphere.Core.csproj",
         "projectName": "SellSphere.Core",
-        "projectPath": "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Core\\SellSphere.Core.csproj",
+        "projectPath": "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\Нова папка (4)\\SellSphere\\SellSphere.Core\\SellSphere.Core.csproj",
         "packagesPath": "C:\\Users\\fasol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\SellSphere2\\SellSphere.Core\\obj\\",
+        "outputPath": "C:\\Users\\fasol\\OneDrive\\Рабочий стол\\Нова папка (4)\\SellSphere\\SellSphere.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\fasol\\AppData\\Roaming\\NuGet\\NuGet.Config",
